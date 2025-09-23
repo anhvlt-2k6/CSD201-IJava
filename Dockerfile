@@ -35,6 +35,8 @@ RUN chown -R $NB_UID $HOME
 
 USER $NB_USER
 
+EXPOSE 8888
+
 # Launch the notebook server
 WORKDIR $HOME
-CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser"]
+CMD ["jupyter", "lab", "--ip", "0.0.0.0", "--no-browser"]
