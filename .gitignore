@@ -7,3 +7,27 @@
 
 # virtualenv
 env/
+/.problems/BST3/nbproject/private/
+/.problems/BST3/build/
+/.problems/DupBST/build/
+/.problems/DupBST/nbproject/private/
+/.problems/BST1/build/
+/.problems/BST1/nbproject/private/
+/.problems/Demo/BST1/nbproject/private/
+/.problems/Demo/BST1/build/
+/.problems/Demo/DupBST/nbproject/private/
+/.problems/Demo/DupBST/build/
+/.problems/Demo/BST2/nbproject/private/
+/.problems/Demo/BST2/build/
+/.problems/Demo/BST3/nbproject/private/
+/.problems/Demo/BST3/build/
+/.problems/Demo/BST4/nbproject/private/
+/.problems/Demo/BST4/build/
+/.problems/Demo/BST5/nbproject/private/
+/.problems/Demo/BST5/build/
+/.problems/Demo/BST6/nbproject/private/
+/.problems/Demo/BST6/build/
+/.problems/Demo/BST7/nbproject/private/
+/.problems/Demo/BST7/build/
+/.problems/Demo/BST8/nbproject/private/
+/.problems/Demo/BST8/build/
