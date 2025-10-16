@@ -1,4 +1,4 @@
-package q1;
+package Graph5;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -372,14 +372,13 @@ public class Graph {
                 }
             }
         }
-        // In duong di ngan nhat tu start den tat ca cac dinh khac
-//        for (int i = 0; i < numberOfVertices; i++) {
-////            resultDijkstra += "," + distance[i];
-//            resultbacktrackDijkstra = "";
-//            backtrackDijkstra(start, i);
-//            String temp = resultbacktrackDijkstra;
-//            resultDijkstra += "\n" + i + "--" + distance[i] + ": " + temp;
-//        }
+        for (int i = 0; i < numberOfVertices; i++) {
+//            resultDijkstra += "," + distance[i];
+            resultbacktrackDijkstra = "";
+            backtrackDijkstra(start, i);
+            String temp = resultbacktrackDijkstra;
+            resultDijkstra += "\n" + i + "--" + distance[i] + ": " + temp;
+        }
     }
 
     void spDijkstra(int start, int des) {
@@ -408,6 +407,7 @@ public class Graph {
         resetIsVisited(); // Đảm bảo tất cả các đỉnh chưa được duyệt
         StringBuilder result = new StringBuilder(); // StringBuilder để xây dựng chuỗi kết quả
         // Duyệt qua tất cả các đỉnh
+        int j = 1;
         for (int i = 0; i < numberOfVertices; i++) {
             if (isVisited[i] == 0) { // Nếu đỉnh chưa được duyệt
                 countComponent++;
@@ -415,12 +415,13 @@ public class Graph {
 //                BFS(i);
                 DFS(i); // Thực hiện duyệt theo chiều sâu từ đỉnh này
                 // Thêm đỉnh đã duyệt vào chuỗi kết quả
-                result.append("\nConnected component ").append(i + 1).append(": ").append(resultDFS.substring(1)).append("\n");
+                result.append(j).append(":").append(resultDFS.substring(1)).append("\n");
                 // Xóa chuỗi kết quả của DFS để sử dụng lại cho đỉnh tiếp theo
                 resultDFS = "";
+                j++;
             }
         }
-        return result.toString(); // Trả về chuỗi kết quả
+        return countComponent + "\n" + result.toString(); // Trả về chuỗi kết quả
     }
 
     String getConnectedCity() {
@@ -493,29 +494,29 @@ public class Graph {
 //        spDijkstra(startTraversal);
 //        spDijkstra(startTraversal, endTraversal);
 //        backtrackDijkstra(startTraversal, endTraversal);
-        BFS(startTraversal);
+//        BFS(startTraversal);
 //        allBFS();
 //        allDFS();
-        DFS(startTraversal);
+//        DFS(startTraversal);
 //        findEvenDFS(startTraversal);
 //        findIsolated();
 //        findNonIsolated();
 //        findPendant();
 //        cutVertex();
 //        bridge();
-//        String r = getConnectedComponents();
+        String r = getConnectedComponents();
 
         try {
             File o = new File(fileName);
-            FileWriter out = new FileWriter(o);
+            FileWriter out = new FileWriter(o); 
 //            out.write(resultDegree.substring(1));
 //            out.write(String.valueOf(numberOfVertices - 1) + " ");
 //            out.write(String.valueOf(sumPrim));
 //            out.write("\n");
 //            out.write(resultPrim);
-            out.write(resultDFS.substring(1) + "\n");
+//            out.write(resultDFS.substring(1) + "\n");
 //            out.write(resultEvenDFS.substring(1));
-            out.write(resultBFS.substring(1));
+//            out.write(resultBFS.substring(1));
 //            out.write(resultAllBFS); //Call for all component
 //            out.write(resultAllDFS);
             //In ket qua do thi lien thong hay khong
@@ -547,7 +548,7 @@ public class Graph {
 //            out.write(resultBridge);
 //            out.write(res);
 //            out.write(String.valueOf(countComponent - 1));
-
+            out.write(r);
             out.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -555,53 +556,53 @@ public class Graph {
     }
 
 //    Adjacent Matrix
-//    void readDataFile(String fileName) {
-//        try {
-//            File in = new File(fileName);
-//            Scanner sc = new Scanner(in);
-//            numberOfVertices = sc.nextInt(); //số đỉnh
-////            startTraversal = sc.nextInt(); //đỉnh bắt đầu tìm đường đi ngắn nhất Dijkstra
-////            endTraversal = sc.nextInt(); //đỉnh dich tìm đường đi ngắn nhất Dijkstra
-//
-//            for (int i = 0; i < numberOfVertices; i++) {
-//                for (int j = 0; j < numberOfVertices; j++) {
-//                    int w = sc.nextInt();
-//                    graph[i][j] = w;
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
-
-     // Edge list 
     void readDataFile(String fileName) {
         try {
             File in = new File(fileName);
             Scanner sc = new Scanner(in);
-            numberOfVertices = sc.nextInt(); // Số đỉnh
-            int numberOfEdges = sc.nextInt(); // Số cạnh
-        startTraversal = sc.nextInt(); // Đỉnh bắt đầu 
-//        endTraversal = sc.nextInt(); // Đỉnh kết thúc        
+            numberOfVertices = sc.nextInt(); //số đỉnh
+//            startTraversal = sc.nextInt(); //đỉnh bắt đầu tìm đường đi ngắn nhất Dijkstra
+//            endTraversal = sc.nextInt(); //đỉnh dich tìm đường đi ngắn nhất Dijkstra
 
-            // Đọc các cạnh và cập nhật ma trận kề
-            for (int i = 0; i < numberOfEdges; i++) {
-                int from = sc.nextInt();
-                int to = sc.nextInt();
-//                int w = sc.nextInt(); // Nếu có trọng số
-                graph[from][to] = 1; // Cập nhật ma trận kề
-                graph[to][from] = 1; // Vì đồ thị vô hướng. Nếu có hướng thì đóng lại
-//                graph[from][to] = w; // Nếu có trọng số
-//                graph[to][from] = w; // Nếu đồ thị vô hướng có trọng số. Nếu có hướng thì đóng lại 
+            for (int i = 0; i < numberOfVertices; i++) {
+                for (int j = 0; j < numberOfVertices; j++) {
+                    int w = sc.nextInt();
+                    graph[i][j] = w;
+                }
             }
-//            startTraversal = sc.nextInt(); // Đỉnh bắt đầu duyệt
-//            endTraversal = sc.nextInt(); // Đỉnh bắt đầu duyệt 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }   
-    
-    
+    }
+//
+//     // Edge list 
+//    void readDataFile(String fileName) {
+//        try {
+//            File in = new File(fileName);
+//            Scanner sc = new Scanner(in);
+//            numberOfVertices = sc.nextInt(); // Số đỉnh
+//            int numberOfEdges = sc.nextInt(); // Số cạnh
+//        startTraversal = sc.nextInt(); // Đỉnh bắt đầu 
+////        endTraversal = sc.nextInt(); // Đỉnh kết thúc        
+//
+//            // Đọc các cạnh và cập nhật ma trận kề
+//            for (int i = 0; i < numberOfEdges; i++) {
+//                int from = sc.nextInt();
+//                int to = sc.nextInt();
+////                int w = sc.nextInt(); // Nếu có trọng số
+//                graph[from][to] = 1; // Cập nhật ma trận kề
+//                graph[to][from] = 1; // Vì đồ thị vô hướng. Nếu có hướng thì đóng lại
+////                graph[from][to] = w; // Nếu có trọng số
+////                graph[to][from] = w; // Nếu đồ thị vô hướng có trọng số. Nếu có hướng thì đóng lại 
+//            }
+////            startTraversal = sc.nextInt(); // Đỉnh bắt đầu duyệt
+////            endTraversal = sc.nextInt(); // Đỉnh bắt đầu duyệt 
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }   
+//    
+//    
     
     //In testcase
     void readOneNumber(String fileName) {

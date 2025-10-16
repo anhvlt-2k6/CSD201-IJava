@@ -1,4 +1,4 @@
-package q1;
+package Graph1;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -143,8 +143,8 @@ public class Graph {
 
     //DFS for one connected conponent
     void DFS(int start) {
-        resetIsVisited(); // remove in case of All DFS on call
-        resetParent(); // remove in case of All DFS on call
+        resetIsVisited();
+        resetParent();
         resultDFS = "";
         Stack<Integer> s = new Stack<>();
         s.add(start);
@@ -372,14 +372,13 @@ public class Graph {
                 }
             }
         }
-        // In duong di ngan nhat tu start den tat ca cac dinh khac
-//        for (int i = 0; i < numberOfVertices; i++) {
-////            resultDijkstra += "," + distance[i];
-//            resultbacktrackDijkstra = "";
-//            backtrackDijkstra(start, i);
-//            String temp = resultbacktrackDijkstra;
-//            resultDijkstra += "\n" + i + "--" + distance[i] + ": " + temp;
-//        }
+        for (int i = 0; i < numberOfVertices; i++) {
+//            resultDijkstra += "," + distance[i];
+            resultbacktrackDijkstra = "";
+            backtrackDijkstra(start, i);
+            String temp = resultbacktrackDijkstra;
+            resultDijkstra += "\n" + i + "--" + distance[i] + ": " + temp;
+        }
     }
 
     void spDijkstra(int start, int des) {
@@ -581,8 +580,8 @@ public class Graph {
             Scanner sc = new Scanner(in);
             numberOfVertices = sc.nextInt(); // Số đỉnh
             int numberOfEdges = sc.nextInt(); // Số cạnh
-        startTraversal = sc.nextInt(); // Đỉnh bắt đầu 
-//        endTraversal = sc.nextInt(); // Đỉnh kết thúc        
+            startTraversal = sc.nextInt(); // Đỉnh bắt đầu
+//            endTraversal = sc.nextInt(); // Đỉnh kết thúc
 
             // Đọc các cạnh và cập nhật ma trận kề
             for (int i = 0; i < numberOfEdges; i++) {
