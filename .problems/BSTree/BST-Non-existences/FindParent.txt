@@ -1,0 +1,21 @@
+//////////////////////
+////// Self-writing
+//////////////////////
+
+String resultParent = "";
+
+void findParent(BSTNode currentNode) {
+    if (currentNode == null) {
+        return;
+    }
+
+    for (int i = 0; i < currentNode.count; i++) {
+        System.out.println(currentNode.data);
+        resultParent += "," + currentNode.data + "[" + currentNode.parent + "]";
+    }
+
+    findParent(currentNode.left);
+    findParent(currentNode.right);
+}
+
+//////////////////////

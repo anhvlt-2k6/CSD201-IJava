@@ -1,0 +1,27 @@
+////////////////////////////
+///////// Self-writing
+////////////////////////////
+
+String resultTwoChild = "";
+
+void findOnlyTwoChild(BSTNode currentNode) {
+    if (currentNode == null) {
+        return;
+    }
+
+    if (currentNode.hasTwoChild()) {
+        for (int i = 0; i < currentNode.count; i++) {
+            System.out.println(currentNode.data);
+            resultTwoChild += "," + currentNode.data;
+        }
+    }
+
+    findOnlyTwoChild(currentNode.left);
+    findOnlyTwoChild(currentNode.right);
+}
+
+void findOnlyTwoChild() {
+    findOnlyTwoChild(root);
+}
+
+////////////////////////////

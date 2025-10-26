@@ -1,0 +1,14 @@
+/////////////////////////////////
+/////////// Self-writing
+////////////////////////////////
+void findDescendant(int data) {
+    BSTNode currentNode = this.findNode(data);
+    if (currentNode.left != null) {
+        this.preOder(currentNode.left);
+    }
+
+    if (currentNode.right != null) {
+        this.preOder(currentNode.right);
+    }
+}
+////////////////////////////////

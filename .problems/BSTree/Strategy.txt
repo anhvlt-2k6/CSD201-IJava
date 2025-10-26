@@ -1,0 +1,8 @@
+How to solve any BST problem
+
+1. Copy from the template
+2. Rename the project, package, and the main program (usually the Q1.java) to match the problem criteria
+3. In the main program class, change the input and output file to match the problem criteria
+4. In the BSTTree.java, carefully check if the problem requires the tree has duplicated or not
+5. In the BSTTree.java, carefully check the output and input methods
+6. Start solving

@@ -1,0 +1,24 @@
+/////////////////////////////////
+/////////// Self-writing
+////////////////////////////////
+String resultFindAncestor = "";
+
+void findAncestor(int data) {
+
+    BSTNode currentNode = this.findNode(data);
+
+    while (currentNode.parent != null) {
+        currentNode = currentNode.parent;
+        for (int i = 0; i < currentNode.count; i++) {
+            System.out.println(currentNode.data);
+            resultFindAncestor += "," + currentNode.data;
+        }
+    }
+
+    String[] results = resultFindAncestor.split(",");
+    resultFindAncestor = "";
+    for (int i = results.length - 1; i >= 0; i--) {
+        resultFindAncestor += "," + results[i];
+    }
+}
+////////////////////////////////
