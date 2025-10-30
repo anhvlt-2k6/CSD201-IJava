@@ -21,9 +21,9 @@ RUN unzip ijava-kernel.zip -d ijava-kernel \
 
 # Set up the user environment
 
-ENV NB_USER jovyan
-ENV NB_UID 1000
-ENV HOME /home/$NB_USER
+ENV NB_USER=jovyan
+ENV NB_UID=1001
+ENV HOME=/home/$NB_USER
 
 RUN adduser --disabled-password \
     --gecos "Default user" \

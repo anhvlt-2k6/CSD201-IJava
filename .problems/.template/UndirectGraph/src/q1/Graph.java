@@ -487,6 +487,7 @@ public class Graph {
         printEdgeList();
 //        System.out.print(getEdge());
 //        calculateDegree();
+		// Using prim for minimum spanning tree problems
 //        prim();
 //        startTraversal = 0;
 //        spDijkstra(startTraversal);
@@ -578,8 +579,8 @@ public class Graph {
         try {
             File in = new File(fileName);
             Scanner sc = new Scanner(in);
-            numberOfVertices = sc.nextInt(); // Số đỉnh
-            int numberOfEdges = sc.nextInt(); // Số cạnh
+            numberOfVertices = sc.nextInt(); // Số đỉnh (vertices)
+            int numberOfEdges = sc.nextInt(); // Số cạnh (edges)
         startTraversal = sc.nextInt(); // Đỉnh bắt đầu 
 //        endTraversal = sc.nextInt(); // Đỉnh kết thúc        
 
