@@ -143,6 +143,7 @@ public class Graph {
 
     //DFS for one connected conponent
     void DFS(int start) {
+		// Please disable reset in case of traverse for all DFS
         resetIsVisited();
         resetParent();
         resultDFS = "";
@@ -171,6 +172,7 @@ public class Graph {
         this.countComponent = 0;
         for (int v = 0; v < this.numberOfVertices; v++) {
             if (this.isVisited[v] == 0) {
+				// Disable reset inside of that!!
                 DFS(v);
                 this.countComponent++;
                 this.resultAllDFS = this.resultAllDFS + "\n" + this.resultDFS.substring(1);
@@ -206,6 +208,7 @@ public class Graph {
 
     //BFS for one connected conponent
     void BFS(int start) {
+		// Please disable all reset in case of the allBFS
         resetIsVisited();
         resetParent();
         resultBFS = "";
@@ -230,10 +233,11 @@ public class Graph {
     //BFS for all connected conponents
     void allBFS() {
         resetIsVisited();
-//        resetParent();
+        resetParent();
         countComponent = 0;
         for (int v = 0; v < numberOfVertices; v++) {
             if (isVisited[v] == 0) {
+				// Disable all reset inside of this
                 BFS(v);
                 countComponent++;
                 resultAllBFS = resultAllBFS + "\n" + resultBFS.substring(1);
