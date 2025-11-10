@@ -140,7 +140,7 @@ public class EightQueensChecker {
 
             System.out.printf("%d: %s%n", r + 1, sb.toString().trim());
         }
-        System.out.println("    1 2 3 4 5 6 7 8");
+        System.out.println("   1 2 3 4 5 6 7 8");
     }
 
     private void placeNewQueen() {
@@ -234,7 +234,7 @@ public class EightQueensChecker {
                 } else if (line.equalsIgnoreCase("placeNew")) {
                     this.placeNewQueen();
                 } else if (line.equalsIgnoreCase("fillQueen")) {
-                    this.tryFillQueen(1, 1);
+                    this.tryFillQueen(0, 0);
                 } else if (line.isEmpty()) {
                     // Do nothing
                 } else {
@@ -276,7 +276,8 @@ public class EightQueensChecker {
     // Real recursive is here
     private void tryFillQueen(int row, int col) {
         if (row < 0 || row > 7 || col < 0 || col > 7) {
-            System.out.println("Coordinates must be between 1 and 8.");
+            System.out.println("Coordinates must be between 0 and 7.");
+            return;
         }
 
         System.out.println(String.format("Now try placing for row %d and col %d", row, col));
@@ -285,8 +286,7 @@ public class EightQueensChecker {
             boolean isBreak = false;
             for (int c = col; c < 8; c++) {
                 if (this.isSafe(r, c)) {
-                    this.placeQueen(r - 1, c - 1);
-                    isBreak = true;
+                    this.placeQueen(r, c);
                 } else {
                     if (c == 7) {
                         this.tryFillQueen(r + 1, 0);
@@ -294,6 +294,7 @@ public class EightQueensChecker {
                         this.tryFillQueen(r, c + 1);
                     }
                 }
+                isBreak = true;
                 break;
             }
             if (isBreak) {
