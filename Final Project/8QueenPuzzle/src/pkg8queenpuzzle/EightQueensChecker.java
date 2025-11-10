@@ -280,25 +280,14 @@ public class EightQueensChecker {
             return;
         }
 
-        System.out.println(String.format("Now try placing for row %d and col %d", row, col));
-        
-        for (int r = row; r < 8; r++) {
-            boolean isBreak = false;
-            for (int c = col; c < 8; c++) {
-                if (this.isSafe(r, c)) {
-                    this.placeQueen(r, c);
-                } else {
-                    if (c == 7) {
-                        this.tryFillQueen(r + 1, 0);
-                    } else {
-                        this.tryFillQueen(r, c + 1);
-                    }
-                }
-                isBreak = true;
-                break;
-            }
-            if (isBreak) {
-                break;
+        System.out.println(String.format("Now try placing for row %d and col %d", row + 1, col + 1));
+        if (this.isSafe(row, col)) {
+            this.placeQueen(row, col);
+        } else {
+            if (col == 7) {
+                this.tryFillQueen(row + 1, 0);
+            } else {
+                this.tryFillQueen(row, col + 1);
             }
         }
     }
